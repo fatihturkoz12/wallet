@@ -1,320 +1,303 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!doctype html>
+<html lang="tr">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>Welcome to Firebase Hosting</title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2113.65">
-  <style type="text/css">
-    body {background-color: #e7ebed}
-    span.s1 {font-kerning: none}
-    span.s2 {font: 16.0px Helvetica; font-kerning: none; color: #fd9009; background-color: #ffffff; -webkit-text-stroke: 0px #fd9009}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BSC — Cüzdan Bakiyeleri (Oto Yükle + Fiyat Güncelle)</title>
+<style>
+  :root{--bg:#f6f8fb;--txt:#0c1428;--pri:#0b5fff;--mut:#667085}
+  *{box-sizing:border-box}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;background:var(--bg);color:var(--txt)}
+  header{background:var(--pri);color:#fff;padding:14px 16px;font-weight:600}
+  .container{padding:12px;max-width:960px;margin:0 auto}
+  label{display:block;margin:8px 0 4px;font-size:13px}
+  input,select,button{width:100%;padding:10px;border-radius:10px;border:1px solid #d6dbe9}
+  button{background:var(--pri);color:#fff;border:none;font-weight:600;margin-top:8px}
+  button.ghost{background:#e7efff;color:var(--pri)}
+  .card{background:#fff;border-radius:12px;padding:12px;margin-top:12px;box-shadow:0 8px 24px rgba(12,20,40,0.06)}
+  table{width:100%;border-collapse:collapse;margin-top:8px}
+  th,td{padding:8px;border-bottom:1px solid #eef2f7;text-align:right}
+  th:nth-child(1),td:nth-child(1){text-align:left}
+  .mut{color:#667085;font-size:13px}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#eef2ff;color:#334;font-size:12px}
+  .kpi{display:flex;gap:10px;flex-wrap:wrap}
+  .kpi .box{flex:1;background:#fafbff;border:1px solid #eef2ff;padding:10px;border-radius:10px}
+  .chg-pos{color:#057a55;font-weight:700}  /* yeşil */
+  .chg-neg{color:#b00020;font-weight:700}  /* kırmızı */
+  .chg-na{color:#888}
+</style>
 </head>
 <body>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;!doctype html&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;html lang="tr"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;head&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;meta charset="utf-8" /&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;meta name="viewport" content="width=device-width,initial-scale=1" /&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;title&gt;BSC — Cüzdan Bakiyeleri (Oto Yükle + Fiyat Güncelle)&lt;/title&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;style&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>:root{--bg:#f6f8fb;--txt:#0c1428;--pri:#0b5fff;--mut:#667085}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>*{box-sizing:border-box}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;background:var(--bg);color:var(--txt)}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>header{background:var(--pri);color:#fff;padding:14px 16px;font-weight:600}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>.container{padding:12px;max-width:960px;margin:0 auto}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>label{display:block;margin:8px 0 4px;font-size:13px}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>input,select,button{width:100%;padding:10px;border-radius:10px;border:1px solid #d6dbe9}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>button{background:var(--pri);color:#fff;border:none;font-weight:600;margin-top:8px}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>button.ghost{background:#e7efff;color:var(--pri)}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>.card{background:#fff;border-radius:12px;padding:12px;margin-top:12px;box-shadow:0 8px 24px rgba(12,20,40,0.06)}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>table{width:100%;border-collapse:collapse;margin-top:8px}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>th,td{padding:8px;border-bottom:1px solid #eef2f7;text-align:right}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>th:nth-child(1),td:nth-child(1){text-align:left}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>.mut{color:#667085;font-size:13px}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>.pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#eef2ff;color:#334;font-size:12px}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>.kpi{display:flex;gap:10px;flex-wrap:wrap}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>.kpi .box{flex:1;background:#fafbff;border:1px solid #eef2ff;padding:10px;border-radius:10px}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>.chg-pos{color:#057a55;font-weight:700}<span class="Apple-converted-space">  </span>/* yeşil */</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>.chg-neg{color:#b00020;font-weight:700}<span class="Apple-converted-space">  </span>/* kırmızı */</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>.chg-na{color:#888}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;/style&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;/head&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;body&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;header&gt;BSC — Cüzdan Bakiyeleri (Oto Yükle + Fiyat Güncelle)&lt;/header&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;div class="container"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;div class="card"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;div style="display:flex;gap:8px;flex-wrap:wrap"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;div style="flex:1"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;label&gt;Zincir&lt;/label&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;select id="chain"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">          </span>&lt;option value="bsc" selected&gt;BSC&lt;/option&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">          </span>&lt;option value="ethereum"&gt;Ethereum&lt;/option&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">          </span>&lt;option value="polygon"&gt;Polygon&lt;/option&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">          </span>&lt;option value="arbitrum"&gt;Arbitrum&lt;/option&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;/select&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;div style="flex:2"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;label&gt;Cüzdan adresi&lt;/label&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;input id="address" placeholder="0x..." /&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;div style="display:flex;gap:8px;flex-wrap:wrap"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;button id="loadWallet"&gt;Cüzdanı Yükle (bakiyeleri al)&lt;/button&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;button id="refreshPrices" class="ghost"&gt;Güncelle (fiyatları yenile)&lt;/button&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;div id="status" class="mut" style="margin-top:6px"&gt;Hazır.&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;div id="error" style="color:#b00020"&gt;&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;div class="card"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;div class="kpi"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;div class="box"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;div class="mut"&gt;Toplam USD (son)&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;div id="totalUsd" style="font-weight:700;font-size:20px"&gt;—&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;div class="box"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;div class="mut"&gt;Toplam Değişim % (güncelleme)&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;div id="totalChangePct" class="chg-na" style="font-weight:700;font-size:20px"&gt;—&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;div class="box"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;div class="mut"&gt;Token Sayısı&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;div id="tokenCount" style="font-weight:700;font-size:20px"&gt;—&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;div class="box"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;div class="mut"&gt;Son Güncelleme&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;div id="lastUpdated" style="font-weight:700;font-size:20px"&gt;—&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;div class="card"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;table id="tbl"&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;thead&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;tr&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">          </span>&lt;th&gt;Token&lt;/th&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">          </span>&lt;th&gt;Adet&lt;/th&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">          </span>&lt;th&gt;Fiyat (USD)&lt;/th&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">          </span>&lt;th&gt;Değer (USD)&lt;/th&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">          </span>&lt;th&gt;Δ% (fiyat)&lt;/th&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">          </span>&lt;th&gt;Adres&lt;/th&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;/tr&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;/thead&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;tbody&gt;&lt;/tbody&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/table&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;/div&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;script&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>/* === AYARLAR === */</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 13.0px 'Helvetica Neue'"><span class="s2"><b>const MORALIS_API_KEY = "</b></span>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IjU2ODlhYTM3LTIzYjctNDkwOC04OTdkLTNjNjdjMDUyNTIzMyIsIm9yZ0lkIjoiNDc0NzQ5IiwidXNlcklkIjoiNDg4Mzk0IiwidHlwZUlkIjoiODNkZmQ0MDYtZDdhMi00ZTY3LWFiYTMtNzc5MGIzZTQ1M2NlIiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3NTk5MTA4MDgsImV4cCI6NDkxNTY3MDgwOH0.toc8lBYY3PGPyxx_KOvrsBSLR3AA-DchSDRQNCklqfA<span class="s2"><b>"; // &lt;-- anahtarını ekle</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>const API_MORALIS = "https://deep-index.moralis.io/api/v2.2";</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>/* === YARDIMCI === */</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>const $ = s =&gt; document.querySelector(s);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>const fmt = n =&gt; (n==null||isNaN(n)) ? '—' : (n&gt;=1? Number(n).toLocaleString(undefined,{maximumFractionDigits:2}) : Number(n).toPrecision(6));</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>const pct = (oldV, newV) =&gt; {</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>if(oldV==null || isNaN(oldV) || oldV===0 || newV==null || isNaN(newV)) return null;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>return ((newV - oldV) / oldV) * 100;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>};</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>const CHAIN_MAP = {</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>bsc: { moralis: 'bsc', dexs: 'bsc' },</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>ethereum: { moralis: 'eth', dexs: 'ethereum' },</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>polygon: { moralis: 'polygon', dexs: 'polygon' },</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>arbitrum: { moralis: 'arbitrum', dexs: 'arbitrum' },</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>};</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>/* === DURUM (hafıza) === */</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>let rows = []; <span class="Apple-converted-space">          </span>// [{address,symbol,amount,priceUsd,valueUsd, prevPriceUsd, prevValueUsd}]</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>let lastTotal = null;<span class="Apple-converted-space">    </span>// önceki toplam (güncelleme öncesi)</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>let priceMap = {}; <span class="Apple-converted-space">      </span>// mevcut fiyatlar</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>let prevPriceMap = {}; <span class="Apple-converted-space">  </span>// önceki fiyatlar (fiyat güncellemesi için)</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>/* === MORALIS: bakiyeler === */</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>async function fetchBalances(address, chainKey){</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const moralisChain = CHAIN_MAP[chainKey]?.moralis || 'bsc';</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const url = `${API_MORALIS}/wallets/${address}/tokens?chain=${encodeURIComponent(moralisChain)}&amp;exclude_spam=true`;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const r = await fetch(url, { headers: { "X-API-Key": MORALIS_API_KEY, "accept":"application/json" }});</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>if(!r.ok){</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>const t = await r.text().catch(()=&gt; "");</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>throw new Error(`Moralis hata: ${r.status} ${t}`);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const data = await r.json();</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>// Çoğu planda: { result: [ ... ] }</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const list = data.result || data;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>return list.map(it=&gt;{</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>const decimals = Number(it.decimals||18);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>const amount = it.balance_formatted != null</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>? Number(it.balance_formatted)</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>: Number(it.balance||0)/10**decimals;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>return {</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>address: (it.token_address||'').toLowerCase(),</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>symbol: it.symbol || '',</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>decimals,</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>amount</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>};</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>}).filter(x=&gt;x.address);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>/* === DEXSCREENER: fiyatlar === */</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>async function fetchDexPrices(chainKey, addresses){</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const dexsChain = CHAIN_MAP[chainKey]?.dexs || 'bsc';</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const out = {};</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>for(let i=0;i&lt;addresses.length;i+=30){</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>const group = addresses.slice(i, i+30);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>const path = `/tokens/v1/${encodeURIComponent(dexsChain)}/${encodeURIComponent(group.join(','))}`;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>const url = 'https://api.dexscreener.com' + path;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>const r = await fetch(url);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>if(!r.ok) throw new Error('Dexscreener hata: '+r.status);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>const arr = await r.json();</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>(arr||[]).forEach(it=&gt;{</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>const a = (it.baseToken?.address||'').toLowerCase();</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>if(a) out[a] = Number(it.priceUsd||NaN);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>});</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>return out;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>/* === TABLO === */</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>function render(){</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const tbody = $("#tbl tbody");</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>tbody.innerHTML = '';</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>let total = 0;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>rows.forEach(r=&gt;{</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>total += (r.valueUsd||0);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>const ch = pct(r.prevPriceUsd, r.priceUsd);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>const chCls = ch==null ? 'chg-na' : (ch&gt;=0 ? 'chg-pos' : 'chg-neg');</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>const chText = ch==null ? '—' : (ch&gt;=0? '+' : '') + ch.toFixed(2) + '%';</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>const tr = document.createElement('tr');</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>tr.innerHTML = `</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;td style="text-align:left"&gt;&lt;span class="pill"&gt;${r.symbol||'—'}&lt;/span&gt;&lt;/td&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;td&gt;${fmt(r.amount)}&lt;/td&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;td&gt;${fmt(r.priceUsd)}&lt;/td&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;td&gt;&lt;strong&gt;${fmt(r.valueUsd)}&lt;/strong&gt;&lt;/td&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;td class="${chCls}"&gt;${chText}&lt;/td&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;td style="font-family:monospace"&gt;${r.address.slice(0,6)}…${r.address.slice(-4)}&lt;/td&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>`;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>tbody.appendChild(tr);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>});</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const totalCh = pct(lastTotal, total);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const chCls = totalCh==null ? 'chg-na' : (totalCh&gt;=0 ? 'chg-pos' : 'chg-neg');</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>$("#totalUsd").textContent = fmt(total);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>$("#tokenCount").textContent = rows.length;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>$("#lastUpdated").textContent = new Date().toLocaleTimeString();</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const totalEl = $("#totalChangePct");</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>totalEl.className = chCls;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>totalEl.textContent = totalCh==null ? '—' : ((totalCh&gt;=0? '+' : '') + totalCh.toFixed(2) + '%');</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>/* === AKIŞLAR === */</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>async function loadWalletFlow(){</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>$("#error").textContent = ''; $("#status").textContent = 'Cüzdan ve fiyatlar yükleniyor...';</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const chainKey = $("#chain").value;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const addr = ($("#address").value||'').trim();</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>if(!addr || !addr.startsWith('0x')) { $("#error").textContent='Geçerli bir adres gir.'; return; }</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>try{</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>// 1) bakiyeler</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>const bals = await fetchBalances(addr, chainKey);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>// 2) fiyatlar</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>const addresses = bals.map(b=&gt;b.address);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>priceMap = await fetchDexPrices(chainKey, addresses);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>// önceki verileri sıfırla (ilk kurulum)</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>prevPriceMap = {};</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>lastTotal = null;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>// 3) satırları kur</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>rows = bals.map(b=&gt;{</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>const p = priceMap[b.address];</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>const v = (p!=null &amp;&amp; !isNaN(p)) ? b.amount * p : null;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>return {</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>address: b.address,</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>symbol: b.symbol,</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>amount: b.amount,</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>priceUsd: p,</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>valueUsd: v,</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>prevPriceUsd: null,</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>prevValueUsd: null</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>};</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>}).sort((a,b)=&gt; (b.valueUsd||0)-(a.valueUsd||0));</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>// sakla: adres &amp; zincir (oto-yükleme)</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>localStorage.setItem('last_addr', addr);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>localStorage.setItem('last_chain', chainKey);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>$("#status").textContent = 'Tamamlandı.';</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>render();</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>}catch(e){</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>console.error(e);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>$("#status").textContent = 'Hata oluştu';</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>$("#error").textContent = e.message || String(e);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>async function refreshPricesFlow(){</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>$("#error").textContent=''; $("#status").textContent='Fiyatlar güncelleniyor...';</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>if(rows.length===0){ $("#error").textContent='Önce cüzdanı yükleyin.'; return; }</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const chainKey = $("#chain").value;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const addresses = rows.map(r=&gt;r.address);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>try{</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>// toplam eskiyi not al</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>lastTotal = rows.reduce((acc,r)=&gt; acc + (r.valueUsd||0), 0);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>// eski fiyatları sakla</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>prevPriceMap = {...priceMap};</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>// yeni fiyat haritası</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>priceMap = await fetchDexPrices(chainKey, addresses);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>// satırları güncelle</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>rows = rows.map(r=&gt;{</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>const oldP = r.priceUsd;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>const oldV = r.valueUsd;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>const newP = priceMap[r.address];</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>const newV = (newP!=null &amp;&amp; !isNaN(newP)) ? r.amount * newP : null;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>return {</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>...r,</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>prevPriceUsd: oldP,</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>prevValueUsd: oldV,</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>priceUsd: newP,</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">        </span>valueUsd: newV</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">      </span>};</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>}).sort((a,b)=&gt; (b.valueUsd||0)-(a.valueUsd||0));</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>$("#status").textContent='Güncellendi.';</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>render();</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>}catch(e){</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>console.error(e);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>$("#status").textContent='Hata oluştu';</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>$("#error").textContent = e.message || String(e);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>/* === OLAYLAR === */</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>$("#loadWallet").addEventListener('click', loadWalletFlow);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>$("#refreshPrices").addEventListener('click', refreshPricesFlow);</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff; min-height: 19.0px"><span class="s1"><b></b></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>/* === OTOMATİK: sayfa açılışında son adresi yükle === */</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>window.addEventListener('DOMContentLoaded', ()=&gt;{</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const savedAddr = localStorage.getItem('last_addr');</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>const savedChain = localStorage.getItem('last_chain');</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>if(savedChain) $("#chain").value = savedChain;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>if(savedAddr){</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>$("#address").value = savedAddr;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>// otomatik cüzdan yükleme</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">    </span>loadWalletFlow();</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b><span class="Apple-converted-space">  </span>}</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>});</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;/script&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;/body&gt;</b></span></h2>
-<h2 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 16.0px Helvetica; color: #fd9009; -webkit-text-stroke: #fd9009; background-color: #ffffff"><span class="s1"><b>&lt;/html&gt;</b></span></h2>
+<header>BSC — Cüzdan Bakiyeleri (Oto Yükle + Fiyat Güncelle)</header>
+<div class="container">
+
+  <div class="card">
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <div style="flex:1">
+        <label>Zincir</label>
+        <select id="chain">
+          <option value="bsc" selected>BSC</option>
+          <option value="ethereum">Ethereum</option>
+          <option value="polygon">Polygon</option>
+          <option value="arbitrum">Arbitrum</option>
+        </select>
+      </div>
+      <div style="flex:2">
+        <label>Cüzdan adresi</label>
+        <input id="address" placeholder="0x..." />
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button id="loadWallet">Cüzdanı Yükle (bakiyeleri al)</button>
+      <button id="refreshPrices" class="ghost">Güncelle (fiyatları yenile)</button>
+    </div>
+    <div id="status" class="mut" style="margin-top:6px">Hazır.</div>
+    <div id="error" style="color:#b00020"></div>
+  </div>
+
+  <div class="card">
+    <div class="kpi">
+      <div class="box">
+        <div class="mut">Toplam USD (son)</div>
+        <div id="totalUsd" style="font-weight:700;font-size:20px">—</div>
+      </div>
+      <div class="box">
+        <div class="mut">Toplam Değişim % (güncelleme)</div>
+        <div id="totalChangePct" class="chg-na" style="font-weight:700;font-size:20px">—</div>
+      </div>
+      <div class="box">
+        <div class="mut">Token Sayısı</div>
+        <div id="tokenCount" style="font-weight:700;font-size:20px">—</div>
+      </div>
+      <div class="box">
+        <div class="mut">Son Güncelleme</div>
+        <div id="lastUpdated" style="font-weight:700;font-size:20px">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Adet</th>
+          <th>Fiyat (USD)</th>
+          <th>Değer (USD)</th>
+          <th>Δ% (fiyat)</th>
+          <th>Adres</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+/* === AYARLAR === */
+const MORALIS_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IjU2ODlhYTM3LTIzYjctNDkwOC04OTdkLTNjNjdjMDUyNTIzMyIsIm9yZ0lkIjoiNDc0NzQ5IiwidXNlcklkIjoiNDg4Mzk0IiwidHlwZUlkIjoiODNkZmQ0MDYtZDdhMi00ZTY3LWFiYTMtNzc5MGIzZTQ1M2NlIiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3NTk5MTA4MDgsImV4cCI6NDkxNTY3MDgwOH0.toc8lBYY3PGPyxx_KOvrsBSLR3AA-DchSDRQNCklqfA"; // <-- anahtarını ekle
+const API_MORALIS = "https://deep-index.moralis.io/api/v2.2";
+
+/* === YARDIMCI === */
+const $ = s => document.querySelector(s);
+const fmt = n => (n==null||isNaN(n)) ? '—' : (n>=1? Number(n).toLocaleString(undefined,{maximumFractionDigits:2}) : Number(n).toPrecision(6));
+const pct = (oldV, newV) => {
+  if(oldV==null || isNaN(oldV) || oldV===0 || newV==null || isNaN(newV)) return null;
+  return ((newV - oldV) / oldV) * 100;
+};
+const CHAIN_MAP = {
+  bsc: { moralis: 'bsc', dexs: 'bsc' },
+  ethereum: { moralis: 'eth', dexs: 'ethereum' },
+  polygon: { moralis: 'polygon', dexs: 'polygon' },
+  arbitrum: { moralis: 'arbitrum', dexs: 'arbitrum' },
+};
+
+/* === DURUM (hafıza) === */
+let rows = [];           // [{address,symbol,amount,priceUsd,valueUsd, prevPriceUsd, prevValueUsd}]
+let lastTotal = null;    // önceki toplam (güncelleme öncesi)
+let priceMap = {};       // mevcut fiyatlar
+let prevPriceMap = {};   // önceki fiyatlar (fiyat güncellemesi için)
+
+/* === MORALIS: bakiyeler === */
+async function fetchBalances(address, chainKey){
+  const moralisChain = CHAIN_MAP[chainKey]?.moralis || 'bsc';
+  const url = `${API_MORALIS}/wallets/${address}/tokens?chain=${encodeURIComponent(moralisChain)}&exclude_spam=true`;
+  const r = await fetch(url, { headers: { "X-API-Key": MORALIS_API_KEY, "accept":"application/json" }});
+  if(!r.ok){
+    const t = await r.text().catch(()=> "");
+    throw new Error(`Moralis hata: ${r.status} ${t}`);
+  }
+  const data = await r.json();
+  // Çoğu planda: { result: [ ... ] }
+  const list = data.result || data;
+  return list.map(it=>{
+    const decimals = Number(it.decimals||18);
+    const amount = it.balance_formatted != null
+      ? Number(it.balance_formatted)
+      : Number(it.balance||0)/10**decimals;
+    return {
+      address: (it.token_address||'').toLowerCase(),
+      symbol: it.symbol || '',
+      decimals,
+      amount
+    };
+  }).filter(x=>x.address);
+}
+
+/* === DEXSCREENER: fiyatlar === */
+async function fetchDexPrices(chainKey, addresses){
+  const dexsChain = CHAIN_MAP[chainKey]?.dexs || 'bsc';
+  const out = {};
+  for(let i=0;i<addresses.length;i+=30){
+    const group = addresses.slice(i, i+30);
+    const path = `/tokens/v1/${encodeURIComponent(dexsChain)}/${encodeURIComponent(group.join(','))}`;
+    const url = 'https://api.dexscreener.com' + path;
+    const r = await fetch(url);
+    if(!r.ok) throw new Error('Dexscreener hata: '+r.status);
+    const arr = await r.json();
+    (arr||[]).forEach(it=>{
+      const a = (it.baseToken?.address||'').toLowerCase();
+      if(a) out[a] = Number(it.priceUsd||NaN);
+    });
+  }
+  return out;
+}
+
+/* === TABLO === */
+function render(){
+  const tbody = $("#tbl tbody");
+  tbody.innerHTML = '';
+  let total = 0;
+
+  rows.forEach(r=>{
+    total += (r.valueUsd||0);
+    const ch = pct(r.prevPriceUsd, r.priceUsd);
+    const chCls = ch==null ? 'chg-na' : (ch>=0 ? 'chg-pos' : 'chg-neg');
+    const chText = ch==null ? '—' : (ch>=0? '+' : '') + ch.toFixed(2) + '%';
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="text-align:left"><span class="pill">${r.symbol||'—'}</span></td>
+      <td>${fmt(r.amount)}</td>
+      <td>${fmt(r.priceUsd)}</td>
+      <td><strong>${fmt(r.valueUsd)}</strong></td>
+      <td class="${chCls}">${chText}</td>
+      <td style="font-family:monospace">${r.address.slice(0,6)}…${r.address.slice(-4)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  const totalCh = pct(lastTotal, total);
+  const chCls = totalCh==null ? 'chg-na' : (totalCh>=0 ? 'chg-pos' : 'chg-neg');
+  $("#totalUsd").textContent = fmt(total);
+  $("#tokenCount").textContent = rows.length;
+  $("#lastUpdated").textContent = new Date().toLocaleTimeString();
+  const totalEl = $("#totalChangePct");
+  totalEl.className = chCls;
+  totalEl.textContent = totalCh==null ? '—' : ((totalCh>=0? '+' : '') + totalCh.toFixed(2) + '%');
+}
+
+/* === AKIŞLAR === */
+async function loadWalletFlow(){
+  $("#error").textContent = ''; $("#status").textContent = 'Cüzdan ve fiyatlar yükleniyor...';
+  const chainKey = $("#chain").value;
+  const addr = ($("#address").value||'').trim();
+  if(!addr || !addr.startsWith('0x')) { $("#error").textContent='Geçerli bir adres gir.'; return; }
+
+  try{
+    // 1) bakiyeler
+    const bals = await fetchBalances(addr, chainKey);
+    // 2) fiyatlar
+    const addresses = bals.map(b=>b.address);
+    priceMap = await fetchDexPrices(chainKey, addresses);
+
+    // önceki verileri sıfırla (ilk kurulum)
+    prevPriceMap = {};
+    lastTotal = null;
+
+    // 3) satırları kur
+    rows = bals.map(b=>{
+      const p = priceMap[b.address];
+      const v = (p!=null && !isNaN(p)) ? b.amount * p : null;
+      return {
+        address: b.address,
+        symbol: b.symbol,
+        amount: b.amount,
+        priceUsd: p,
+        valueUsd: v,
+        prevPriceUsd: null,
+        prevValueUsd: null
+      };
+    }).sort((a,b)=> (b.valueUsd||0)-(a.valueUsd||0));
+
+    // sakla: adres & zincir (oto-yükleme)
+    localStorage.setItem('last_addr', addr);
+    localStorage.setItem('last_chain', chainKey);
+
+    $("#status").textContent = 'Tamamlandı.';
+    render();
+  }catch(e){
+    console.error(e);
+    $("#status").textContent = 'Hata oluştu';
+    $("#error").textContent = e.message || String(e);
+  }
+}
+
+async function refreshPricesFlow(){
+  $("#error").textContent=''; $("#status").textContent='Fiyatlar güncelleniyor...';
+  if(rows.length===0){ $("#error").textContent='Önce cüzdanı yükleyin.'; return; }
+
+  const chainKey = $("#chain").value;
+  const addresses = rows.map(r=>r.address);
+  try{
+    // toplam eskiyi not al
+    lastTotal = rows.reduce((acc,r)=> acc + (r.valueUsd||0), 0);
+    // eski fiyatları sakla
+    prevPriceMap = {...priceMap};
+
+    // yeni fiyat haritası
+    priceMap = await fetchDexPrices(chainKey, addresses);
+
+    // satırları güncelle
+    rows = rows.map(r=>{
+      const oldP = r.priceUsd;
+      const oldV = r.valueUsd;
+      const newP = priceMap[r.address];
+      const newV = (newP!=null && !isNaN(newP)) ? r.amount * newP : null;
+      return {
+        ...r,
+        prevPriceUsd: oldP,
+        prevValueUsd: oldV,
+        priceUsd: newP,
+        valueUsd: newV
+      };
+    }).sort((a,b)=> (b.valueUsd||0)-(a.valueUsd||0));
+
+    $("#status").textContent='Güncellendi.';
+    render();
+  }catch(e){
+    console.error(e);
+    $("#status").textContent='Hata oluştu';
+    $("#error").textContent = e.message || String(e);
+  }
+}
+
+/* === OLAYLAR === */
+$("#loadWallet").addEventListener('click', loadWalletFlow);
+$("#refreshPrices").addEventListener('click', refreshPricesFlow);
+
+/* === OTOMATİK: sayfa açılışında son adresi yükle === */
+window.addEventListener('DOMContentLoaded', ()=>{
+  const savedAddr = localStorage.getItem('last_addr');
+  const savedChain = localStorage.getItem('last_chain');
+  if(savedChain) $("#chain").value = savedChain;
+  if(savedAddr){
+    $("#address").value = savedAddr;
+    // otomatik cüzdan yükleme
+    loadWalletFlow();
+  }
+});
+</script>
 </body>
 </html>
