@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BSC — Cüzdan Bakiyeleri (Oto Yükle + Fiyat Güncelle)</title>
+<style>
+  :root{--bg:#f6f8fb;--txt:#0c1428;--pri:#0b5fff;--mut:#667085}
+  *{box-sizing:border-box}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;background:var(--bg);color:var(--txt)}
+  header{background:var(--pri);color:#fff;padding:14px 16px;font-weight:600}
+  .container{padding:12px;max-width:960px;margin:0 auto}
+  label{display:block;margin:8px 0 4px;font-size:13px}
+  input,select,button{width:100%;padding:10px;border-radius:10px;border:1px solid #d6dbe9}
+  button{background:var(--pri);color:#fff;border:none;font-weight:600;margin-top:8px}
+  button.ghost{background:#e7efff;color:var(--pri)}
+  .card{background:#fff;border-radius:12px;padding:12px;margin-top:12px;box-shadow:0 8px 24px rgba(12,20,40,0.06)}
+  table{width:100%;border-collapse:collapse;margin-top:8px}
+  th,td{padding:8px;border-bottom:1px solid #eef2f7;text-align:right}
+  th:nth-child(1),td:nth-child(1){text-align:left}
+  .mut{color:#667085;font-size:13px}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#eef2ff;color:#334;font-size:12px}
+  .kpi{display:flex;gap:10px;flex-wrap:wrap}
+  .kpi .box{flex:1;background:#fafbff;border:1px solid #eef2ff;padding:10px;border-radius:10px}
+  .chg-pos{color:#057a55;font-weight:700}  /* yeşil */
+  .chg-neg{color:#b00020;font-weight:700}  /* kırmızı */
+  .chg-na{color:#888}
+</style>
+</head>
+<body>
+<header>BSC — Cüzdan Bakiyeleri (Oto Yükle + Fiyat Güncelle)</header>
+<div class="container">
+
+  <div class="card">
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <div style="flex:1">
+        <label>Zincir</label>
+        <select id="chain">
+          <option value="bsc" selected>BSC</option>
+          <option value="ethereum">Ethereum</option>
+          <option value="polygon">Polygon</option>
+          <option value="arbitrum">Arbitrum</option>
+        </select>
+      </div>
+      <div style="flex:2">
+        <label>Cüzdan adresi</label>
+        <input id="address" placeholder="0x..." />
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button id="loadWallet">Cüzdanı Yükle (bakiyeleri al)</button>
+      <button id="refreshPrices" class="ghost">Güncelle (fiyatları yenile)</button>
+    </div>
+    <div id="status" class="mut" style="margin-top:6px">Hazır.</div>
+    <div id="error" style="color:#b00020"></div>
+  </div>
+
+  <div class="card">
+    <div class="kpi">
+      <div class="box">
+        <div class="mut">Toplam USD (son)</div>
+        <div id="totalUsd" style="font-weight:700;font-size:20px">—</div>
+      </div>
+      <div class="box">
+        <div class="mut">Toplam Değişim % (güncelleme)</div>
+        <div id="totalChangePct" class="chg-na" style="font-weight:700;font-size:20px">—</div>
+      </div>
+      <div class="box">
+        <div class="mut">Token Sayısı</div>
+        <div id="tokenCount" style="font-weight:700;font-size:20px">—</div>
+      </div>
+      <div class="box">
+        <div class="mut">Son Güncelleme</div>
+        <div id="lastUpdated" style="font-weight:700;font-size:20px">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Adet</th>
+          <th>Fiyat (USD)</th>
+          <th>Değer (USD)</th>
+          <th>Δ% (fiyat)</th>
+          <th>Adres</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+/* === AYARLAR === */
+const MORALIS_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IjU2ODlhYTM3LTIzYjctNDkwOC04OTdkLTNjNjdjMDUyNTIzMyIsIm9yZ0lkIjoiNDc0NzQ5IiwidXNlcklkIjoiNDg4Mzk0IiwidHlwZUlkIjoiODNkZmQ0MDYtZDdhMi00ZTY3LWFiYTMtNzc5MGIzZTQ1M2NlIiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3NTk5MTA4MDgsImV4cCI6NDkxNTY3MDgwOH0.toc8lBYY3PGPyxx_KOvrsBSLR3AA-DchSDRQNCklqfA"; // <-- anahtarını ekle
+const API_MORALIS = "https://deep-index.moralis.io/api/v2.2";
+
+/* === YARDIMCI === */
+const $ = s => document.querySelector(s);
+const fmt = n => (n==null||isNaN(n)) ? '—' : (n>=1? Number(n).toLocaleString(undefined,{maximumFractionDigits:2}) : Number(n).toPrecision(6));
+const pct = (oldV, newV) => {
+  if(oldV==null || isNaN(oldV) || oldV===0 || newV==null || isNaN(newV)) return null;
+  return ((newV - oldV) / oldV) * 100;
+};
+const CHAIN_MAP = {
+  bsc: { moralis: 'bsc', dexs: 'bsc' },
+  ethereum: { moralis: 'eth', dexs: 'ethereum' },
+  polygon: { moralis: 'polygon', dexs: 'polygon' },
+  arbitrum: { moralis: 'arbitrum', dexs: 'arbitrum' },
+};
+
+/* === DURUM (hafıza) === */
+let rows = [];           // [{address,symbol,amount,priceUsd,valueUsd, prevPriceUsd, prevValueUsd}]
+let lastTotal = null;    // önceki toplam (güncelleme öncesi)
+let priceMap = {};       // mevcut fiyatlar
+let prevPriceMap = {};   // önceki fiyatlar (fiyat güncellemesi için)
+
+/* === MORALIS: bakiyeler === */
+async function fetchBalances(address, chainKey){
+  const moralisChain = CHAIN_MAP[chainKey]?.moralis || 'bsc';
+  const url = `${API_MORALIS}/wallets/${address}/tokens?chain=${encodeURIComponent(moralisChain)}&exclude_spam=true`;
+  const r = await fetch(url, { headers: { "X-API-Key": MORALIS_API_KEY, "accept":"application/json" }});
+  if(!r.ok){
+    const t = await r.text().catch(()=> "");
+    throw new Error(`Moralis hata: ${r.status} ${t}`);
+  }
+  const data = await r.json();
+  // Çoğu planda: { result: [ ... ] }
+  const list = data.result || data;
+  return list.map(it=>{
+    const decimals = Number(it.decimals||18);
+    const amount = it.balance_formatted != null
+      ? Number(it.balance_formatted)
+      : Number(it.balance||0)/10**decimals;
+    return {
+      address: (it.token_address||'').toLowerCase(),
+      symbol: it.symbol || '',
+      decimals,
+      amount
+    };
+  }).filter(x=>x.address);
+}
+
+/* === DEXSCREENER: fiyatlar === */
+async function fetchDexPrices(chainKey, addresses){
+  const dexsChain = CHAIN_MAP[chainKey]?.dexs || 'bsc';
+  const out = {};
+  for(let i=0;i<addresses.length;i+=30){
+    const group = addresses.slice(i, i+30);
+    const path = `/tokens/v1/${encodeURIComponent(dexsChain)}/${encodeURIComponent(group.join(','))}`;
+    const url = 'https://api.dexscreener.com' + path;
+    const r = await fetch(url);
+    if(!r.ok) throw new Error('Dexscreener hata: '+r.status);
+    const arr = await r.json();
+    (arr||[]).forEach(it=>{
+      const a = (it.baseToken?.address||'').toLowerCase();
+      if(a) out[a] = Number(it.priceUsd||NaN);
+    });
+  }
+  return out;
+}
+
+/* === TABLO === */
+function render(){
+  const tbody = $("#tbl tbody");
+  tbody.innerHTML = '';
+  let total = 0;
+
+  rows.forEach(r=>{
+    total += (r.valueUsd||0);
+    const ch = pct(r.prevPriceUsd, r.priceUsd);
+    const chCls = ch==null ? 'chg-na' : (ch>=0 ? 'chg-pos' : 'chg-neg');
+    const chText = ch==null ? '—' : (ch>=0? '+' : '') + ch.toFixed(2) + '%';
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="text-align:left"><span class="pill">${r.symbol||'—'}</span></td>
+      <td>${fmt(r.amount)}</td>
+      <td>${fmt(r.priceUsd)}</td>
+      <td><strong>${fmt(r.valueUsd)}</strong></td>
+      <td class="${chCls}">${chText}</td>
+      <td style="font-family:monospace">${r.address.slice(0,6)}…${r.address.slice(-4)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  const totalCh = pct(lastTotal, total);
+  const chCls = totalCh==null ? 'chg-na' : (totalCh>=0 ? 'chg-pos' : 'chg-neg');
+  $("#totalUsd").textContent = fmt(total);
+  $("#tokenCount").textContent = rows.length;
+  $("#lastUpdated").textContent = new Date().toLocaleTimeString();
+  const totalEl = $("#totalChangePct");
+  totalEl.className = chCls;
+  totalEl.textContent = totalCh==null ? '—' : ((totalCh>=0? '+' : '') + totalCh.toFixed(2) + '%');
+}
+
+/* === AKIŞLAR === */
+async function loadWalletFlow(){
+  $("#error").textContent = ''; $("#status").textContent = 'Cüzdan ve fiyatlar yükleniyor...';
+  const chainKey = $("#chain").value;
+  const addr = ($("#address").value||'').trim();
+  if(!addr || !addr.startsWith('0x')) { $("#error").textContent='Geçerli bir adres gir.'; return; }
+
+  try{
+    // 1) bakiyeler
+    const bals = await fetchBalances(addr, chainKey);
+    // 2) fiyatlar
+    const addresses = bals.map(b=>b.address);
+    priceMap = await fetchDexPrices(chainKey, addresses);
+
+    // önceki verileri sıfırla (ilk kurulum)
+    prevPriceMap = {};
+    lastTotal = null;
+
+    // 3) satırları kur
+    rows = bals.map(b=>{
+      const p = priceMap[b.address];
+      const v = (p!=null && !isNaN(p)) ? b.amount * p : null;
+      return {
+        address: b.address,
+        symbol: b.symbol,
+        amount: b.amount,
+        priceUsd: p,
+        valueUsd: v,
+        prevPriceUsd: null,
+        prevValueUsd: null
+      };
+    }).sort((a,b)=> (b.valueUsd||0)-(a.valueUsd||0));
+
+    // sakla: adres & zincir (oto-yükleme)
+    localStorage.setItem('last_addr', addr);
+    localStorage.setItem('last_chain', chainKey);
+
+    $("#status").textContent = 'Tamamlandı.';
+    render();
+  }catch(e){
+    console.error(e);
+    $("#status").textContent = 'Hata oluştu';
+    $("#error").textContent = e.message || String(e);
+  }
+}
+
+async function refreshPricesFlow(){
+  $("#error").textContent=''; $("#status").textContent='Fiyatlar güncelleniyor...';
+  if(rows.length===0){ $("#error").textContent='Önce cüzdanı yükleyin.'; return; }
+
+  const chainKey = $("#chain").value;
+  const addresses = rows.map(r=>r.address);
+  try{
+    // toplam eskiyi not al
+    lastTotal = rows.reduce((acc,r)=> acc + (r.valueUsd||0), 0);
+    // eski fiyatları sakla
+    prevPriceMap = {...priceMap};
+
+    // yeni fiyat haritası
+    priceMap = await fetchDexPrices(chainKey, addresses);
+
+    // satırları güncelle
+    rows = rows.map(r=>{
+      const oldP = r.priceUsd;
+      const oldV = r.valueUsd;
+      const newP = priceMap[r.address];
+      const newV = (newP!=null && !isNaN(newP)) ? r.amount * newP : null;
+      return {
+        ...r,
+        prevPriceUsd: oldP,
+        prevValueUsd: oldV,
+        priceUsd: newP,
+        valueUsd: newV
+      };
+    }).sort((a,b)=> (b.valueUsd||0)-(a.valueUsd||0));
+
+    $("#status").textContent='Güncellendi.';
+    render();
+  }catch(e){
+    console.error(e);
+    $("#status").textContent='Hata oluştu';
+    $("#error").textContent = e.message || String(e);
+  }
+}
+
+/* === OLAYLAR === */
+$("#loadWallet").addEventListener('click', loadWalletFlow);
+$("#refreshPrices").addEventListener('click', refreshPricesFlow);
+
+/* === OTOMATİK: sayfa açılışında son adresi yükle === */
+window.addEventListener('DOMContentLoaded', ()=>{
+  const savedAddr = localStorage.getItem('last_addr');
+  const savedChain = localStorage.getItem('last_chain');
+  if(savedChain) $("#chain").value = savedChain;
+  if(savedAddr){
+    $("#address").value = savedAddr;
+    // otomatik cüzdan yükleme
+    loadWalletFlow();
+  }
+});
+</script>
+</body>
+</html>
